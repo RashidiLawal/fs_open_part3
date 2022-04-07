@@ -3,6 +3,6 @@ POST http://localhost:3001/api/persons
 content-type: application/json
 
 {
-"name": "Lawal Rashidi",
- "number":"0974484555"
+"name": "De",
+ "number":"448-98654455577"
 }
