@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 require('dotenv').config()
 const Person = require('./models/person')
 const mongoose = require('mongoose')
 const express = require('express')
-const { request, response } = require('express')
 const app = express()
 const cors = require('cors')
 let morgan = require('morgan')
@@ -80,7 +80,7 @@ let info = [
 
 app.get('/api/persons', (request, response) => {
     Person.find({}).then(persons => {
-        response.json(persons) 
+        response.json(persons)
     })
 })
 
@@ -92,7 +92,7 @@ app.get('/api/persons/:id', (request, response, next) => {
         }else {
             response.status(404).end()
         }
-        
+
       }).catch(error => next(error))
     })
 
@@ -120,39 +120,18 @@ app.delete('/api/persons/:id', (request, response, next) => {
 })
 
 
-/* const generateRandomId = () => {
-    const maxNumber = 50
-
-    const maxId = persons.length > 0 ? Math.max(...persons.map(person => person.id)) : 0
-
-    const maxIdPlus = maxId + 1
-    const randomId = Math.floor(Math.random() * (maxNumber - maxIdPlus) + maxIdPlus)
-   
-     return randomId
-} */
 
 
 app.post('/api/persons', (request, response, next) => {
     const body = request.body
 
-   /*  if (!body.name) {
-        return response.status(400).json({
-            error: 'name missing'
-        })
-    }
-    if (!body.number) {
-        return response.status(400).json({
-            error: 'number missing'
-        })
-    } */
-
     const person = new Person({
         name: body.name,
         number: body.number,
-        
+
     })
 
-    
+
     person.save().then(savedPerson => {
       response.json(savedPerson)
     })
@@ -169,7 +148,7 @@ app.put('/api/persons/:id', (request, response, next) => {
         number: body.number
     }
 
-    Person.findByIdAndUpdate(request.params.id, person, {new: true})
+    Person.findByIdAndUpdate(request.params.id, person, { new: true })
         .then(updatedPerson => {
             response.json(updatedPerson)
         })
@@ -181,9 +160,9 @@ const errorHandler = (error, request, response, next) => {
     console.error(error.message)
 
     if (error.name === 'CastError') {
-        return response.status(404).send({error: 'malformatted id'})
+        return response.status(404).send({ error: 'malformatted id' })
     }else if (error.name === 'ValidationError'){
-        return response.status(401).json({error: error.message})
+        return response.status(401).json({ error: error.message })
     }
     next(error)
 }

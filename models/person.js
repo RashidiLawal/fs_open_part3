@@ -4,7 +4,8 @@ const url = process.env.PERSONDB_URI
 
 console.log('connecting to url')
 
-mongoose.connect(url).then(result => {
+// eslint-disable-next-line no-unused-vars
+mongoose.connect(url).then(_result => {
     console.log('connected to Persondb')
 }).catch((error) => {
     console.log('error connecting to Persondb:', error.message)

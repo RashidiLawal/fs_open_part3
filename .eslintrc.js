@@ -1,4 +1,4 @@
-/* module.exports = {
+module.exports = {
     "env": {
         "node": true,
         "commonjs": true,
@@ -29,9 +29,9 @@
         'no-console': 0
     },
 }
- */
 
-module.exports = {
+
+/* module.exports = {
     'env': {
         'commonjs': true,
         'es2021': true,
@@ -44,7 +44,7 @@ module.exports = {
     'rules': {
         'indent': [
             'error',
-            4
+            2
         ],
         'linebreak-style': [
             'error',
@@ -68,4 +68,4 @@ module.exports = {
         ],
         // 'no-console': 0
     }
-}
+} */
